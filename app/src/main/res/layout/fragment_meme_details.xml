@@ -7,7 +7,8 @@
     tools:context=".ui.memesdetails.MemeDetailsFragment">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:id="@+id/image_view_details"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
         android:src="@drawable/_wz1x"
@@ -39,7 +40,7 @@
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline_horizontal"
-        tools:text="W:   " />
+        android:text="W:   " />
 
     <TextView
         android:id="@+id/width"
@@ -61,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline_vertical"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="H:   " />
+        android:text="H:   " />
 
     <TextView
         android:id="@+id/height"
@@ -83,7 +84,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline2_vertical"
         app:layout_constraintTop_toBottomOf="@id/w"
-        tools:text="id: " />
+        android:text="id: " />
 
     <TextView
         android:id="@+id/text_box_name"
@@ -94,7 +95,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline2_vertical"
         app:layout_constraintTop_toBottomOf="@id/text_box_id"
-        tools:text="name: " />
+        android:text="name: " />
 
     <TextView
         android:id="@+id/text_box_count_box"
@@ -105,7 +106,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline2_vertical"
         app:layout_constraintTop_toBottomOf="@id/text_box_name"
-        tools:text="box_count: " />
+        android:text="box_count: " />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2_vertical"

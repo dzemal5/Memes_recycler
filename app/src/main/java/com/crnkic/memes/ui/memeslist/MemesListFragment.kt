@@ -40,7 +40,7 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
                 when (it) {
                     is MemesContainerResult.Success -> {
 
-                        getMemesRecyclerList(it.memesContainer)
+                        getMemesRecyclerList(it.memesContainer.data.memes)
                         Log.d("RECYCLER", "success")
                     }
                     is MemesContainerResult.Failure -> {
