@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/memeDetailsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.memesdetails.MemeDetailsFragment">
@@ -36,11 +37,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:text="W:   "
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal"
-        android:text="W:   " />
+        app:layout_constraintTop_toBottomOf="@id/guideline_horizontal" />
 
     <TextView
         android:id="@+id/width"
@@ -57,12 +58,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:rotation="-90"
+        android:text="H:   "
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/guideline_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline_vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="H:   " />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/height"
@@ -80,33 +81,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:text="id: "
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline2_vertical"
-        app:layout_constraintTop_toBottomOf="@id/w"
-        android:text="id: " />
+        app:layout_constraintTop_toBottomOf="@id/w" />
 
     <TextView
         android:id="@+id/text_box_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:text="name: "
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline2_vertical"
-        app:layout_constraintTop_toBottomOf="@id/text_box_id"
-        android:text="name: " />
+        app:layout_constraintTop_toBottomOf="@id/text_box_id" />
 
     <TextView
         android:id="@+id/text_box_count_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:text="box_count: "
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/guideline2_vertical"
-        app:layout_constraintTop_toBottomOf="@id/text_box_name"
-        android:text="box_count: " />
+        app:layout_constraintTop_toBottomOf="@id/text_box_name" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2_vertical"

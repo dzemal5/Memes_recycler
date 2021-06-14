@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.crnkic.memes.R
 import com.crnkic.memes.databinding.FragmentMemeDetailsBinding
+import com.crnkic.memes.ui.memeslist.MemesListFragmentDirections
 
 class MemeDetailsFragment : Fragment(R.layout.fragment_meme_details) {
 
@@ -20,6 +22,11 @@ class MemeDetailsFragment : Fragment(R.layout.fragment_meme_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getDataForFragmentDetails()
+        binding.memeDetailsFragment.setOnClickListener {
+            val directions =
+                    MemeDetailsFragmentDirections.actionMemeDetailsFragmentToMemesListFragment()
+            findNavController().navigate(directions)
+        }
     }
 
     override fun onCreateView(
