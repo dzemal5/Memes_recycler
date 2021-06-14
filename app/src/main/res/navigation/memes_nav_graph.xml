@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/memes_nav_graph"
+    app:startDestination="@id/memesListFragment">
+
+    <fragment
+        android:id="@+id/memesListFragment"
+        android:name="com.crnkic.memes.ui.memeslist.MemesListFragment"
+        android:label="fragment_meme_list"
+        tools:layout="@layout/fragment_meme_list" >
+        <action
+            android:id="@+id/action_memesListFragment_to_memeDetailsFragment"
+            app:destination="@id/memeDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/memeDetailsFragment"
+        android:name="com.crnkic.memes.ui.memesdetails.MemeDetailsFragment"
+        android:label="fragment_meme_details"
+        tools:layout="@layout/fragment_meme_details" >
+        <argument
+            android:name="Memes"
+            app:argType="com.crnkic.memes.data.model.Memes" />
+    </fragment>
+</navigation>
