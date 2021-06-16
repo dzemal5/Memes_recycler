@@ -72,6 +72,7 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
         binding.recyclerViewInListFragment.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = memesListAdapter
+
         }
 
         memesListAdapter.setOnItemClickListener {

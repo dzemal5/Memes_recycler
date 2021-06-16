@@ -20,7 +20,7 @@
         android:label="fragment_meme_details"
         tools:layout="@layout/fragment_meme_details" >
         <argument
-            android:name="Memes"
+            android:name="memes"
             app:argType="com.crnkic.memes.data.model.Memes" />
         <action
             android:id="@+id/action_memeDetailsFragment_to_memesListFragment"

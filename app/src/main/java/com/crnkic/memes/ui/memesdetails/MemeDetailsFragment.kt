@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.crnkic.memes.R
+import com.crnkic.memes.data.model.Memes
 import com.crnkic.memes.databinding.FragmentMemeDetailsBinding
 import com.crnkic.memes.ui.memeslist.MemesListFragmentDirections
 
@@ -43,8 +44,9 @@ class MemeDetailsFragment : Fragment(R.layout.fragment_meme_details) {
         _binding = null
     }
 
-    fun getDataForFragmentDetails() {
-        val meme = args.Memes
+    private fun getDataForFragmentDetails() {
+
+        val meme = args.memes
         context?.let {
             Glide.with(it).load(meme.url).into(binding.imageViewDetails)
         }
