@@ -22,8 +22,5 @@
         <argument
             android:name="memes"
             app:argType="com.crnkic.memes.data.model.Memes" />
-        <action
-            android:id="@+id/action_memeDetailsFragment_to_memesListFragment"
-            app:destination="@id/memesListFragment" />
     </fragment>
 </navigation>

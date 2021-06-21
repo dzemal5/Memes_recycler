@@ -4,5 +4,6 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class HiltDependencyContainer : Application() {
+class MemeApplication : Application() {
+
 }

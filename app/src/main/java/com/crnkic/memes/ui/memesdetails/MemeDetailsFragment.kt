@@ -23,11 +23,6 @@ class MemeDetailsFragment : Fragment(R.layout.fragment_meme_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getDataForFragmentDetails()
-        binding.memeDetailsFragment.setOnClickListener {
-            val directions =
-                    MemeDetailsFragmentDirections.actionMemeDetailsFragmentToMemesListFragment()
-            findNavController().navigate(directions)
-        }
     }
 
     override fun onCreateView(

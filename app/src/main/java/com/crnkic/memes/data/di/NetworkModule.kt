@@ -1,4 +1,4 @@
-package com.vladkryvovyaz.mvvm_hilt_test.di
+package com.crnkic.memes.data.di
 
 import com.crnkic.memes.BASE_URL
 import com.crnkic.memes.data.network.GetDataService

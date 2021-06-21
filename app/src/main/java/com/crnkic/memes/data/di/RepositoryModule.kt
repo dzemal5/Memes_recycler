@@ -1,4 +1,4 @@
-package com.vladkryvovyaz.mvvm_hilt_test.di
+package com.crnkic.memes.data.di
 
 import com.crnkic.memes.data.network.GetDataService
 import com.crnkic.memes.data.repository.MemesContainerRepository
@@ -17,4 +17,5 @@ object RepositoryModule {
     fun provideMemesRepository(memeService: GetDataService): MemesContainerRepositoryImp {
         return MemesContainerRepository(memeService)
     }
+
 }

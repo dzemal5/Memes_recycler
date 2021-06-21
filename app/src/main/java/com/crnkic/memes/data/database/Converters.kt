@@ -10,13 +10,13 @@ import com.google.gson.reflect.TypeToken
 class MemesListConverters {
 
     @TypeConverter
-    fun MemesListToString(memesList: Data) : String {
+    fun memesListToString(memesList: Data) : String {
         val type = object : TypeToken<Data>() {}.type
         return Gson().toJson(memesList, type)
     }
 
     @TypeConverter
-    fun StringToMemesList(memesList: String) : Data {
+    fun stringToMemesList(memesList: String) : Data {
         val type = object : TypeToken<Data>() {}.type
         return Gson().fromJson(memesList, type)
     }
