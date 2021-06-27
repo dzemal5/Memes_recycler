@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.crnkic.memes.data.model.MemesContainerResult
 import com.crnkic.memes.data.repository.MemesContainerRepository
-import com.crnkic.memes.data.repository.MemesContainerRepositoryImp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

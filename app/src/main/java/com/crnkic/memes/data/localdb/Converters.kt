@@ -1,9 +1,7 @@
-package com.crnkic.memes.data.database
+package com.crnkic.memes.data.localdb
 
 import androidx.room.TypeConverter
 import com.crnkic.memes.data.model.Data
-import com.crnkic.memes.data.model.Memes
-import com.crnkic.memes.data.model.MemesContainer
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

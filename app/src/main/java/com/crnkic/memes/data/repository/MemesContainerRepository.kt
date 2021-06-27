@@ -1,58 +1,41 @@
 package com.crnkic.memes.data.repository
 
-import com.crnkic.memes.data.database.MemesLocalDataSourceImplementation
-import com.crnkic.memes.data.model.MemesContainer
+import androidx.lifecycle.LiveData
+import com.crnkic.memes.data.localdb.MemesContainerDao
+import com.crnkic.memes.data.model.Memes
 import com.crnkic.memes.data.model.MemesContainerResult
-import com.crnkic.memes.data.network.MemesRemoteDataSource
+import com.crnkic.memes.data.network.GetDataService
+import java.lang.Error
 import javax.inject.Inject
 
 class MemesContainerRepository @Inject constructor(
-    private val localDataSourceImplementation: MemesLocalDataSourceImplementation
-    ) : MemesContainerRepositoryImp {
+    private val memesContainerDao: MemesContainerDao,
+    private val getDataService: GetDataService) : MemesContainerRepositoryImp{
+
+    override suspend fun insertMemesItem(meme: Memes) {
+        memesContainerDao.insertMemeItem(meme)
+    }
+
+    override suspend fun deleteMemesItem(meme: Memes) {
+      memesContainerDao.deleteMemeItem(meme)
+    }
+
+    override fun observeAllMemesItems(): LiveData<List<Memes>> {
+       return memesContainerDao.observeAllMemesItems()
+    }
 
     override suspend fun fetchMemesContainer(): MemesContainerResult {
-        val memesContainerFetchResult = MemesRemoteDataSource.fetchMemesContainer()
-        if(memesContainerFetchResult is MemesContainerResult.Success) {
-            insertToDatabase(memesContainerFetchResult.memesContainer)
+        return try {
+            val response = getDataService.getMemesData()
+            if(response.isSuccessful) {
+                response.body()?.let {
+                    return@let MemesContainerResult.Success(it)
+                } ?: MemesContainerResult.Failure(Error("An unknown error occured", null))
+            } else {
+                MemesContainerResult.Failure(Error("An unknown error occured", null))
+            }
+        } catch (e: Exception) {
+            MemesContainerResult.Failure(Error("Couldn't reach the server. Check your internet connection", null))
         }
-        return memesContainerFetchResult
     }
-
-    override suspend fun getSavedMemesContainer(): MemesContainerResult {
-        return localDataSourceImplementation.getSavedMemesContainer()
-    }
-
-    override suspend fun insertToDatabase(memesContainer: MemesContainer) {
-        localDataSourceImplementation.deleteAll()
-        localDataSourceImplementation.insert(memesContainer)
-    }
-
-    //    override suspend fun fetchMemesContainer(): MemesContainerResult =
-//        withContext(Dispatchers.IO) {
-//            val memesCall = memeService.getMemesData()
-//
-//            try {
-//                val response = memesCall.execute()
-//
-//                val memesContainer = response.body()
-//                Log.d("RECYCLER", "Forecast response from backend" + memesContainer.toString())
-//                memesContainer?.let {
-//                    return@withContext MemesContainerResult.Success(it)
-//                } ?: run {
-//                    return@withContext MemesContainerResult.Failure(
-//                        Error(
-//                            RESPONSE_PARSING_ERROR_MESSAGE
-//
-//                        )
-//                    )
-//                }
-//            } catch (ex: Exception) {
-//                Log.e("RECYCLER", "exceptionInRepository")
-//                return@withContext MemesContainerResult.Failure(Error(ex.message))
-//            }
-//        }
-
-//    fun getMemesContainerFromDatabase() : MemesContainerResult{
-//
-//    }
 }

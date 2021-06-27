@@ -9,17 +9,17 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = "memesContainerTable")
 data class MemesContainer(
-        @Expose(deserialize = false, serialize = false)
-        @PrimaryKey(autoGenerate = false)
         var id: Int = 0,
         var success: Boolean,
         var data: Data
 ) : Parcelable
 
 @Parcelize
+@Entity(tableName = "memesContainerTable")
 data class Memes(
+        @Expose(deserialize = false, serialize = false)
+        @PrimaryKey(autoGenerate = false)
         var id: String,
         var name: String,
         var url: String,

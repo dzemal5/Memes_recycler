@@ -28,10 +28,6 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
 
     val memesViewModel: MemesListViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         memesViewModel.memesContainerResultLiveData.observe(viewLifecycleOwner, Observer {memesContainerResult ->
@@ -40,7 +36,7 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
                 when (it) {
                     is MemesContainerResult.Success -> {
 
-                        getMemesRecyclerList(it.memesContainer.data.memes)
+                        getMemesRecyclerList(it.memesContainer)
                         Log.d("RECYCLER", "success")
                     }
                     is MemesContainerResult.Failure -> {
