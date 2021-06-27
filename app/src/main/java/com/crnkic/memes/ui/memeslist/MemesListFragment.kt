@@ -63,7 +63,6 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
         // Inflate the layout for this fragment
         _binding = FragmentMemeListBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     private fun getMemesRecyclerList(memes: List<Memes>) {

@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MemesListViewModel @Inject constructor(private var memesContainerRepository: MemesContainerRepositoryImp) : ViewModel() {
+class MemesListViewModel @Inject constructor(private var memesContainerRepository: MemesContainerRepository) : ViewModel() {
 
     private val _memesContainerResultLiveData = MutableLiveData<MemesContainerResult>()
     val memesContainerResultLiveData: LiveData<MemesContainerResult>
