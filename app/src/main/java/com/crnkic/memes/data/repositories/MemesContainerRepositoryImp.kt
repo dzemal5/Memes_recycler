@@ -1,4 +1,4 @@
-package com.crnkic.memes.data.repository
+package com.crnkic.memes.data.repositories
 
 import androidx.lifecycle.LiveData
 import com.crnkic.memes.data.model.Memes

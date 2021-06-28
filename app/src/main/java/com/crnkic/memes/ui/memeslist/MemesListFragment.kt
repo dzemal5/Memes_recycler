@@ -35,8 +35,7 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
             memesContainerResult?.let {
                 when (it) {
                     is MemesContainerResult.Success -> {
-
-                        getMemesRecyclerList(it.memesContainer)
+                        getMemesRecyclerList()
                         Log.d("RECYCLER", "success")
                     }
                     is MemesContainerResult.Failure -> {
@@ -61,8 +60,8 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
         return binding.root
     }
 
-    private fun getMemesRecyclerList(memes: List<Memes>) {
-        val memesListAdapter = MemesListAdapter(memes)
+    private fun getMemesRecyclerList() {
+        val memesListAdapter = MemesListAdapter()
 
         binding.recyclerViewInListFragment.apply {
             layoutManager = LinearLayoutManager(context)

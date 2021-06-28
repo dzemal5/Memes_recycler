@@ -7,9 +7,9 @@ import com.bumptech.glide.Glide
 import com.crnkic.memes.data.model.Memes
 import com.crnkic.memes.databinding.FragmentMemeListItemBinding
 
-class MemesListAdapter(
-        private var memes: List<Memes>)
-    : RecyclerView.Adapter<MemesListAdapter.MemeViewHolder>() {
+class MemesListAdapter() : RecyclerView.Adapter<MemesListAdapter.MemeViewHolder>() {
+
+    private var memes = listOf<Memes>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemeViewHolder {
         return MemeViewHolder(

@@ -28,13 +28,12 @@ object AppModule {
     @Provides
     fun provideMemesDao(database: MemesRoomDatabase) = database.getMemesContainerDao()
 
-    @Provides
     @Singleton
+    @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(Retrofit::class.java)
     }
 
     @Provides
