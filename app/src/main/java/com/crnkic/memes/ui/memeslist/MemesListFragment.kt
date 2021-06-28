@@ -30,12 +30,14 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        memesViewModel.fetchMemesContainer()
         memesViewModel.memesContainerResultLiveData.observe(viewLifecycleOwner, Observer {memesContainerResult ->
+            Log.d("Fetch_Data", "fetching data")
 
             memesContainerResult?.let {
                 when (it) {
                     is MemesContainerResult.Success -> {
-                        getMemesRecyclerList()
+                        getMemesRecyclerList(it.memesContainer)
                         Log.d("RECYCLER", "success")
                     }
                     is MemesContainerResult.Failure -> {
@@ -60,8 +62,8 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
         return binding.root
     }
 
-    private fun getMemesRecyclerList() {
-        val memesListAdapter = MemesListAdapter()
+    private fun getMemesRecyclerList(memes : List<Memes>) {
+        val memesListAdapter = MemesListAdapter(memes)
 
         binding.recyclerViewInListFragment.apply {
             layoutManager = LinearLayoutManager(context)

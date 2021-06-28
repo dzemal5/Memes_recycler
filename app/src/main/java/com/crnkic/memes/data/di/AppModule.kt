@@ -2,9 +2,12 @@ package com.crnkic.memes.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.crnkic.memes.BASE_URL
+import com.crnkic.memes.util.BASE_URL
+import com.crnkic.memes.data.localdb.MemesContainerDao
 import com.crnkic.memes.data.localdb.MemesRoomDatabase
 import com.crnkic.memes.data.network.GetDataService
+import com.crnkic.memes.data.repositories.MemesContainerRepository
+import com.crnkic.memes.data.repositories.MemesContainerRepositoryImp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,14 +34,22 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder().baseUrl(BASE_URL)
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+//            .create(Retrofit::class.java)
     }
 
-    @Provides
     @Singleton
+    @Provides
     fun provideMemeService(retrofit: Retrofit): GetDataService =
         retrofit.create(GetDataService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideMemesContainerRepository(memesContainerDao: MemesContainerDao, getDataService: GetDataService) =
+        MemesContainerRepository(memesContainerDao, getDataService)
+
 
 }
