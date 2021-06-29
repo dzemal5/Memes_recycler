@@ -12,9 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.crnkic.memes.R
-import com.crnkic.memes.data.model.Data
 import com.crnkic.memes.data.model.Memes
-import com.crnkic.memes.data.model.MemesContainer
 import com.crnkic.memes.data.model.MemesContainerResult
 import com.crnkic.memes.databinding.FragmentMemeListBinding
 import com.crnkic.memes.ui.adapters.MemesListAdapter
@@ -30,14 +28,13 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        memesViewModel.fetchMemesContainer()
         memesViewModel.memesContainerResultLiveData.observe(viewLifecycleOwner, Observer {memesContainerResult ->
             Log.d("Fetch_Data", "fetching data")
 
             memesContainerResult?.let {
                 when (it) {
                     is MemesContainerResult.Success -> {
-                        getMemesRecyclerList(it.memesContainer)
+                        getMemesRecyclerList(it.memes)
                         Log.d("RECYCLER", "success")
                     }
                     is MemesContainerResult.Failure -> {

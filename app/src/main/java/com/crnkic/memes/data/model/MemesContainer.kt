@@ -1,7 +1,6 @@
 package com.crnkic.memes.data.model
 
 import android.os.Parcelable
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
@@ -31,6 +30,5 @@ data class Memes(
 
 @Parcelize
 data class Data(
-        @Embedded
         var memes: List<Memes>
 ) : Parcelable

@@ -33,23 +33,16 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+    fun provideRetrofit(): Retrofit =
+        Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 //            .create(Retrofit::class.java)
-    }
+
 
     @Singleton
     @Provides
     fun provideMemeService(retrofit: Retrofit): GetDataService =
         retrofit.create(GetDataService::class.java)
-
-    @Singleton
-    @Provides
-    fun provideMemesContainerRepository(memesContainerDao: MemesContainerDao, getDataService: GetDataService) =
-        MemesContainerRepository(memesContainerDao, getDataService)
-
 
 }

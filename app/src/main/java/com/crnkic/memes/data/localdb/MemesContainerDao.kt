@@ -3,7 +3,6 @@ package com.crnkic.memes.data.localdb
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.crnkic.memes.data.model.Memes
-import com.crnkic.memes.data.model.MemesContainer
 
 @Dao
 interface MemesContainerDao {
@@ -11,8 +10,8 @@ interface MemesContainerDao {
     fun observeAllMemesItems(): LiveData<List<Memes>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMemeItem(memes: Memes)
+    suspend fun insertMemeItem(memes: List<Memes>)
 
     @Delete
-    suspend fun deleteMemeItem(memes: Memes)
+    suspend fun deleteMemeItem(memes: List<Memes>)
 }

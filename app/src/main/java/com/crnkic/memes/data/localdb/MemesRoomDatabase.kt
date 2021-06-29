@@ -2,10 +2,8 @@ package com.crnkic.memes.data.localdb
 
 import androidx.room.*
 import com.crnkic.memes.data.model.Memes
-import com.crnkic.memes.data.model.MemesContainer
 
-//@TypeConverters(MemesListConverters::class)
-
+@TypeConverters(MemesListConverters::class)
 @Database(entities = [Memes::class], version = 1)
 abstract class MemesRoomDatabase : RoomDatabase() {
 

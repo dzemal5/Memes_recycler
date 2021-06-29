@@ -8,17 +8,19 @@ import androidx.lifecycle.viewModelScope
 import com.crnkic.memes.data.model.Memes
 import com.crnkic.memes.data.model.MemesContainerResult
 import com.crnkic.memes.data.repositories.MemesContainerRepository
+import com.crnkic.memes.data.repositories.MemesContainerRepositoryImp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class MemesListViewModel @Inject constructor(
-    private var repository: MemesContainerRepository
+    private var repository: MemesContainerRepositoryImp
 ) : ViewModel() {
 
     init {
-        Log.d("Fetch_Data", "fetching data")
+        Timber.d("fetching data")
 
         fetchMemesContainer()
     }
@@ -29,17 +31,19 @@ class MemesListViewModel @Inject constructor(
     val memesContainerResultLiveData: LiveData<MemesContainerResult>
         get() = _memesContainerResultLiveData
 
-    fun insertMemesIntoDb(meme: Memes) = viewModelScope.launch {
+    fun insertMemesIntoDb(meme: List<Memes>) = viewModelScope.launch {
         repository.insertMemesItem(meme)
     }
 
     fun fetchMemesContainer() {
-
         _memesContainerResultLiveData.value = MemesContainerResult.IsLoading
+
         viewModelScope.launch {
-            _memesContainerResultLiveData.value = repository.fetchMemesContainer()
+            val memesResult = repository.fetchMemesContainer()
+            _memesContainerResultLiveData.value = memesResult
         }
     }
+
 
 
 //    private val _memesContainerResultLiveData = MutableLiveData<MemesContainerResult>()
