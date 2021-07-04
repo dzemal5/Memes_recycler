@@ -4,12 +4,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.crnkic.memes.data.localdb.MemesContainerDao
 import com.crnkic.memes.data.model.Memes
+import com.crnkic.memes.data.model.MemesContainer
 import com.crnkic.memes.data.model.MemesContainerResult
 import com.crnkic.memes.data.network.GetDataService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Response
+import java.lang.Error
 import javax.inject.Inject
 import javax.security.auth.callback.Callback
 
@@ -18,11 +20,11 @@ class MemesContainerRepository @Inject constructor(
     private val getDataService: GetDataService
 ) : MemesContainerRepositoryImp {
 
-    override suspend fun insertMemesItem(meme: List<Memes>) {
+    override suspend fun insertMemesItem(meme: Memes) {
         memesContainerDao.insertMemeItem(meme)
     }
 
-    override suspend fun deleteMemesItem(meme: List<Memes>) {
+    override suspend fun deleteMemesItem(meme: Memes) {
         memesContainerDao.deleteMemeItem(meme)
     }
 
@@ -38,7 +40,7 @@ class MemesContainerRepository @Inject constructor(
                 val memes = response.body()
 
                 memes?.let {
-                    return@withContext MemesContainerResult.Success(it)
+                    return@withContext MemesContainerResult.Success(it.data.memes)
                 } ?: run {
                     return@withContext MemesContainerResult.Failure(
                         Error("An unknown error occured")
@@ -52,6 +54,23 @@ class MemesContainerRepository @Inject constructor(
                 )
             }
         }
+
+//    override suspend fun fetchMemesContainer(): MemesContainerResult {
+//        return try {
+//            val response = getDataService.getMemesData()
+//            if(response.isSuccessful) {
+//                response.body()?.let {
+//                    return@let MemesContainerResult.Success(it.data.memes)
+//                } ?: MemesContainerResult.Failure(Error("failed to get the data"))
+//            } else {
+//                MemesContainerResult.Failure(Error("failed to get the data"))
+//            }
+//
+//        } catch (e: Exception) {
+//            return MemesContainerResult.Failure(Error("failed to get the data"))
+//        }
+//    }
+
 }
 
 

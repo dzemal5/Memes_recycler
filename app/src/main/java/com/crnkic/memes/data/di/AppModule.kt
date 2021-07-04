@@ -3,11 +3,8 @@ package com.crnkic.memes.data.di
 import android.content.Context
 import androidx.room.Room
 import com.crnkic.memes.util.BASE_URL
-import com.crnkic.memes.data.localdb.MemesContainerDao
 import com.crnkic.memes.data.localdb.MemesRoomDatabase
 import com.crnkic.memes.data.network.GetDataService
-import com.crnkic.memes.data.repositories.MemesContainerRepository
-import com.crnkic.memes.data.repositories.MemesContainerRepositoryImp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

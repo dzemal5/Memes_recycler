@@ -28,7 +28,10 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        memesViewModel.memesContainerResultLiveData.observe(viewLifecycleOwner, Observer {memesContainerResult ->
+        memesViewModel.getSavedMemesContainer()
+        ////////// need to implement saved live data
+
+        memesViewModel.memesContainerFetchResultLiveData.observe(viewLifecycleOwner, Observer { memesContainerResult ->
             Log.d("Fetch_Data", "fetching data")
 
             memesContainerResult?.let {

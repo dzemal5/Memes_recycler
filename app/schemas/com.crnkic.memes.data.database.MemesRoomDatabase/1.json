@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d9dca650d21db2d9220fae3bfacf4860",
+    "identityHash": "0d22816d295171fc6630ed03a60525f8",
     "entities": [
       {
-        "tableName": "memesContainerTable",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `success` INTEGER NOT NULL, `data` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "tableName": "MemesContainer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `success` INTEGER NOT NULL, `data` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -28,9 +28,7 @@
           }
         ],
         "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
+          "columnNames": [],
           "autoGenerate": false
         },
         "indices": [],
@@ -40,7 +38,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd9dca650d21db2d9220fae3bfacf4860')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0d22816d295171fc6630ed03a60525f8')"
     ]
   }
 }

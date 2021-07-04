@@ -47,7 +47,7 @@ class MemesDaoTest {
         dao.insertMemeItem(memesItem)
 
         val allMemesItems = dao.observeAllMemesItems().getOrAwaitValue()
-        assertThat(allMemesItems.contains(memesItem))
+        assertThat(allMemesItems).contains(memesItem)
     }
 
     @Test
