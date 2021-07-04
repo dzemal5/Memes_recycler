@@ -11,8 +11,8 @@ interface MemesContainerDao {
     fun observeAllMemesItems(): LiveData<List<Memes>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMemeItem(memes: Memes)
+    suspend fun insertMemeItem(memes: List<Memes>)
 
     @Delete
-    suspend fun deleteMemeItem(memes: Memes)
+    suspend fun deleteMemeItem(memes: List<Memes>)
 }

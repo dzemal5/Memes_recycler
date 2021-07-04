@@ -20,11 +20,11 @@ class MemesContainerRepository @Inject constructor(
     private val getDataService: GetDataService
 ) : MemesContainerRepositoryImp {
 
-    override suspend fun insertMemesItem(meme: Memes) {
+    override suspend fun insertMemesItem(meme: List<Memes>) {
         memesContainerDao.insertMemeItem(meme)
     }
 
-    override suspend fun deleteMemesItem(meme: Memes) {
+    override suspend fun deleteMemesItem(meme: List<Memes>) {
         memesContainerDao.deleteMemeItem(meme)
     }
 

@@ -34,7 +34,7 @@ class MemesListViewModel @Inject constructor(
 
     val memesItems = repository.observeAllMemesItems()
 
-    fun insertMemesIntoDb(meme: Memes) = viewModelScope.launch {
+    private fun insertMemesIntoDb(meme: List<Memes>) = viewModelScope.launch {
         repository.insertMemesItem(meme)
     }
 
@@ -44,7 +44,7 @@ class MemesListViewModel @Inject constructor(
             val fetchResult = repository.fetchMemesContainer()
             _memesContainerFetchResultLiveData.value = fetchResult
             if (fetchResult is MemesContainerResult.Success) {
-                
+                insertMemesIntoDb(fetchResult.memes)
             }
         }
 

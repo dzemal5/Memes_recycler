@@ -6,9 +6,9 @@ import com.crnkic.memes.data.model.MemesContainer
 import com.crnkic.memes.data.model.MemesContainerResult
 
 interface MemesContainerRepositoryImp {
-    suspend fun insertMemesItem(meme: Memes)
+    suspend fun insertMemesItem(meme: List<Memes>)
 
-    suspend fun deleteMemesItem(meme: Memes)
+    suspend fun deleteMemesItem(meme: List<Memes>)
 
     fun observeAllMemesItems(): LiveData<List<Memes>>
 

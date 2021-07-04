@@ -65,6 +65,7 @@ class MemesListFragment : Fragment(R.layout.fragment_meme_list) {
     private fun getMemesRecyclerList(memes : List<Memes>) {
         val memesListAdapter = MemesListAdapter(memes)
 
+
         binding.recyclerViewInListFragment.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = memesListAdapter
